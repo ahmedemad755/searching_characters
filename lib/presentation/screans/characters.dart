@@ -174,7 +174,7 @@ class _charactersState extends State<characters> {
               'Can\'t connect .. check internet',
               style: TextStyle(fontSize: 22, color: MyColors.myGrey),
             ),
-            Image.asset('images/undraw_file-search_cbur.png'),
+            Image.asset('images/undraw_empty_4zx0.png'),
           ],
         ),
       ),
@@ -197,7 +197,9 @@ class _charactersState extends State<characters> {
           List<ConnectivityResult> connectivity,
           Widget child,
         ) {
-          final bool connected = connectivity != ConnectivityResult.none;
+          final bool connected = connectivity.any(
+            (character) => character != ConnectivityResult.none,
+          );
 
           if (connected) {
             return BuildBlocer();
